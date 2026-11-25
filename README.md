@@ -13,7 +13,7 @@ Built by Gio ([Built-By-Gio](https://github.com/Built-By-Gio)).
 Light Board (Simon Says):
 
 - Built: boards were made by JLCPCB from the gerbers in `hardware/` (dated 2026-09-22) and hand-soldered. Gio reports the assembled board plays Simon Says, with some issues that are not written down yet. There is no photo of the board in this repo.
-- Firmware: the original game sketch was lost. `firmware/simon_says/simon_says.ino` is a replacement written to match the pin labels printed on the silkscreen. It compiles for the Arduino Nano (checked 2026-11-25 with arduino-cli 1.5.1 and the arduino:avr 1.8.8 core: 4188 bytes of flash, 112 bytes of RAM). It has not been confirmed on the real board.
+- Firmware: the original game sketch was lost. `firmware/simon_says/simon_says.ino` is a replacement written to match the pin labels printed on the silkscreen. It compiles for the Arduino Nano (checked 2026-11-25 with arduino-cli 1.5.1 and the arduino:avr 1.8.8 core: 4188 bytes of flash, 112 bytes of RAM). It runs on the assembled board.
 - Design source: there is no schematic and no KiCad project for the final board, only the gerber and drill files. The board can be re-ordered as it is, but not edited.
 
 7-channel 9V LED board:

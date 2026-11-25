@@ -1,0 +1,29 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build output and logs
+build/
+*.hex
+*.elf
+*.log
+__pycache__/
+.venv/
+node_modules/
+
+# KiCad local settings, backups and caches
+*.kicad_prl
+*-backups/
+fp-info-cache
+_autosave-*
+*.lck
+
+# Working notes
+tasks/
+
+# Not part of this project (single-servo test sketch)
+firmware/light_board_no_switch/
+
+# Older render (kept on disk, not published)
+media/silkscreen_render.png

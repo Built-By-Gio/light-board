@@ -14,19 +14,22 @@ Light Board (Simon Says):
 
 - Built: boards were made by JLCPCB from the gerbers in `hardware/` (dated 2026-09-22) and hand-soldered. The assembled board plays Simon Says, with a few issues I still need to write up. There is no photo of the board in this repo yet.
 - Firmware: the original game sketch was lost. `firmware/simon_says/simon_says.ino` is a replacement written to match the pin labels printed on the silkscreen. It compiles for the Arduino Nano (2026-11-25, arduino-cli 1.5.1 and the arduino:avr 1.8.8 core: 4188 bytes of flash, 112 bytes of RAM). It runs on the assembled board.
-- Design source: there is no schematic and no KiCad project for the final board, only the gerber and drill files. The board can be re-ordered as it is, but not edited.
+- Design source: the KiCad layout is in `hardware/kicad/` (`light_board.kicad_pcb` and `light_board.kicad_pro`). It is the same layout as the gerbers I ordered: same 98 × 86 mm outline, same 91 plated holes (positions and sizes), same pad positions and the same trace routing on both copper layers. This file was saved on 2026-09-22, a few hours before the ordered gerbers were made, and the ordered gerbers differ in these details: traces are 0.4 mm wide instead of 0.3 mm, the button pads are 1.8 mm instead of 1.7 mm, the slide-switch pads are 2.0 mm instead of 1.8 mm, the four mounting holes sit 5 mm from the corners instead of 3.5 mm, and the silkscreen uses a different font and leaves out the reference designators (D1, R1, S1 and so on). The bottom ground fill is defined in the file but saved unfilled; refill zones in KiCad (Edit → Fill All Zones) before plotting. With the zones refilled, KiCad 10's design-rule check (2026-11-25) gives 0 errors and 0 unconnected items, plus 101 warnings that are all silkscreen placement or footprint-library notes.
+- There is no schematic file yet.
 
 7-channel 9V LED board:
 
-- I ordered and built this board.
-- The layout file in this repo fails KiCad 10's design-rule check (run on 2026-11-25) with 128 problems, including 16 +9V-to-GND shorts (each switch's GND pad overlaps the next resistor's +9V pad) and 2 unconnected items (the second row, D6 and D7, is not wired to the screw terminal). Run the check and fix it before ordering from this file.
+- I ordered and built an earlier version of this board.
+- The layout file in this repo was corrected on 2026-11-25. Channels 2 to 5 moved right by 2, 4, 6 and 8 mm, because in the old file each switch's GND pad sat on the next resistor's +9V pad in four places (a short across the supply). The LED pads went from 2.5 mm to 2.0 mm. The second row (D6, D7) is now wired to J1. The board size (160 × 70 mm, 2 layers), parts, values, reference designators and color labels are unchanged.
+- The corrected file passes KiCad 10's design-rule check with 0 errors and 0 unconnected items (59 warnings, all silkscreen-over-copper or footprint-library notes).
+- The corrected version is not ordered yet.
 
 Still to add:
 
 - Photo of the soldered board
 - Demo video
 - Write-up of the known issues
-- KiCad project (schematic and layout) for the final Light Board
+- Schematic for the Light Board
 
 ## What you need
 
@@ -84,7 +87,14 @@ How the game plays (from the sketch):
 
 ## The 7-channel 9V LED board (earlier layout)
 
-A separate, earlier design in `hardware/led-9v-controller/`: seven independent channels, each +9V → 370 Ω resistor → 5 mm LED → switch → GND, fed from a 2-pin screw terminal. There is no microcontroller. Board outline 160 × 70 mm, 2 layers, through-hole. I ordered and built this board. See the Status section: the layout file here fails the design-rule check, so fix it before ordering from this file.
+A separate, earlier design in `hardware/led-9v-controller/`: seven independent channels, each +9V → 370 Ω resistor → 5 mm LED → switch → GND, fed from a 2-pin screw terminal. There is no microcontroller. Board outline 160 × 70 mm, 2 layers, through-hole. I ordered and built an earlier version of this board; the corrected layout here (see the Status section) is not ordered yet. Gerber and drill files exported from the corrected layout are in `hardware/led-9v-controller/gerbers/`.
+
+![Top copper and silkscreen of the corrected 7-channel 9V LED board](media/led-9v-board-top.svg)
+
+Two things to know before ordering:
+
+- The file has no solder-mask layers, so the gerbers include no mask files.
+- The bar on each LED outline sits on the anode (resistor) side. Place each LED with its long leg (anode) toward the resistor, as the silkscreen note says, not by the bar.
 
 Parts, from the footprints and values in `LED_9V_Controller.kicad_pcb`:
 
@@ -105,14 +115,17 @@ Parts, from the footprints and values in `LED_9V_Controller.kicad_pcb`:
 | `firmware/README.md` | Short flashing notes |
 | `hardware/lightboard-gerbers.zip` | Light Board gerber and drill files, ready to upload to a PCB maker |
 | `hardware/gerbers/` | The same 8 files, unzipped (copper, mask, silkscreen, outline, drill) |
-| `hardware/led-9v-controller/` | The earlier 7-channel 9V LED board: KiCad project, layout and notes |
+| `hardware/kicad/` | Light Board KiCad project and layout (`light_board.kicad_pro`, `light_board.kicad_pcb`) |
+| `hardware/led-9v-controller/` | The earlier 7-channel 9V LED board: KiCad project, corrected layout and notes |
+| `hardware/led-9v-controller/gerbers/` | Gerber and drill files exported from the corrected 9V layout |
 | `media/silkscreen_from_gerbers.png` | Image of the Light Board's top silkscreen, top copper and outline, rendered from the gerbers |
+| `media/led-9v-board-top.svg` | Top copper and silkscreen of the corrected 9V board |
 
 ## Roadmap / future plans
 
 - Write down the known issues on the assembled board and what fixes them
 - Photograph the soldered board and record a demo video
-- Recover the original schematic and KiCad project, or redraw them from the gerbers, so the board can be edited
+- Recover or redraw the Light Board schematic
 
 ## Credits and license
 

@@ -116,4 +116,4 @@ Parts, from the footprints and values in `LED_9V_Controller.kicad_pcb`:
 
 ## Credits and license
 
-I designed both boards and built the Light Board. Released under the MIT License; see `LICENSE`.
+I designed and built both boards. Released under the MIT License; see `LICENSE`.

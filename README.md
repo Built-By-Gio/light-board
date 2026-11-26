@@ -18,8 +18,8 @@ Light Board (Simon Says):
 
 7-channel 9V LED board:
 
-- Layout only.
-- A KiCad 10 design-rule check run on 2026-11-25 reports 128 problems, including 16 +9V-to-GND shorts (each switch's GND pad overlaps the next resistor's +9V pad) and 2 unconnected items (the second row, D6 and D7, is not wired to the screw terminal). Do not order it as it is.
+- I ordered and built this board.
+- The layout file in this repo fails KiCad 10's design-rule check (run on 2026-11-25) with 128 problems, including 16 +9V-to-GND shorts (each switch's GND pad overlaps the next resistor's +9V pad) and 2 unconnected items (the second row, D6 and D7, is not wired to the screw terminal). Run the check and fix it before ordering from this file.
 
 Still to add:
 
@@ -84,7 +84,7 @@ How the game plays (from the sketch):
 
 ## The 7-channel 9V LED board (earlier layout)
 
-A separate, earlier design in `hardware/led-9v-controller/`: seven independent channels, each +9V → 370 Ω resistor → 5 mm LED → switch → GND, fed from a 2-pin screw terminal. There is no microcontroller. Board outline 160 × 70 mm, 2 layers, through-hole. See the Status section: the layout has design-rule errors.
+A separate, earlier design in `hardware/led-9v-controller/`: seven independent channels, each +9V → 370 Ω resistor → 5 mm LED → switch → GND, fed from a 2-pin screw terminal. There is no microcontroller. Board outline 160 × 70 mm, 2 layers, through-hole. I ordered and built this board. See the Status section: the layout file here fails the design-rule check, so fix it before ordering from this file.
 
 Parts, from the footprints and values in `LED_9V_Controller.kicad_pcb`:
 

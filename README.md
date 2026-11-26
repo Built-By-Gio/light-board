@@ -1,6 +1,6 @@
 # Light Board ("World Saving LEDs")
 
-Gio's first custom PCB: a Simon Says game. Seven colored LEDs, seven buttons, a passive piezo buzzer and a slide switch sit on a 98 × 86 mm two-layer through-hole board, run by a socketed Arduino Nano. The board lights a growing sequence and you repeat it on the buttons.
+My first custom PCB: a Simon Says game. Seven colored LEDs, seven buttons, a passive piezo buzzer and a slide switch sit on a 98 × 86 mm two-layer through-hole board, run by a socketed Arduino Nano. The board lights a growing sequence and you repeat it on the buttons.
 
 This repo also holds an earlier, separate layout, the 7-channel 9V LED board (`hardware/led-9v-controller/`). It has no microcontroller and is described in its own section below.
 
@@ -12,16 +12,16 @@ Built by Gio ([Built-By-Gio](https://github.com/Built-By-Gio)).
 
 Light Board (Simon Says):
 
-- Built: boards were made by JLCPCB from the gerbers in `hardware/` (dated 2026-09-22) and hand-soldered. Gio reports the assembled board plays Simon Says, with some issues that are not written down yet. There is no photo of the board in this repo.
-- Firmware: the original game sketch was lost. `firmware/simon_says/simon_says.ino` is a replacement written to match the pin labels printed on the silkscreen. It compiles for the Arduino Nano (checked 2026-11-25 with arduino-cli 1.5.1 and the arduino:avr 1.8.8 core: 4188 bytes of flash, 112 bytes of RAM). It runs on the assembled board.
+- Built: boards were made by JLCPCB from the gerbers in `hardware/` (dated 2026-09-22) and hand-soldered. The assembled board plays Simon Says, with a few issues I still need to write up. There is no photo of the board in this repo yet.
+- Firmware: the original game sketch was lost. `firmware/simon_says/simon_says.ino` is a replacement written to match the pin labels printed on the silkscreen. It compiles for the Arduino Nano (2026-11-25, arduino-cli 1.5.1 and the arduino:avr 1.8.8 core: 4188 bytes of flash, 112 bytes of RAM). It runs on the assembled board.
 - Design source: there is no schematic and no KiCad project for the final board, only the gerber and drill files. The board can be re-ordered as it is, but not edited.
 
 7-channel 9V LED board:
 
-- Layout only; not known to have been manufactured.
+- Layout only.
 - A KiCad 10 design-rule check run on 2026-11-25 reports 128 problems, including 16 +9V-to-GND shorts (each switch's GND pad overlaps the next resistor's +9V pad) and 2 unconnected items (the second row, D6 and D7, is not wired to the screw terminal). Do not order it as it is.
 
-Not documented yet:
+Still to add:
 
 - Photo of the soldered board
 - Demo video
@@ -84,7 +84,7 @@ How the game plays (from the sketch):
 
 ## The 7-channel 9V LED board (earlier layout)
 
-A separate, earlier design in `hardware/led-9v-controller/`: seven independent channels, each +9V → 370 Ω resistor → 5 mm LED → switch → GND, fed from a 2-pin screw terminal. There is no microcontroller. Board outline 160 × 70 mm, 2 layers, through-hole. See the Status section: the layout has design-rule errors and has not been checked on a real board.
+A separate, earlier design in `hardware/led-9v-controller/`: seven independent channels, each +9V → 370 Ω resistor → 5 mm LED → switch → GND, fed from a 2-pin screw terminal. There is no microcontroller. Board outline 160 × 70 mm, 2 layers, through-hole. See the Status section: the layout has design-rule errors.
 
 Parts, from the footprints and values in `LED_9V_Controller.kicad_pcb`:
 
@@ -116,4 +116,4 @@ Parts, from the footprints and values in `LED_9V_Controller.kicad_pcb`:
 
 ## Credits and license
 
-Both boards designed by Gio; the Light Board built by Gio. Released under the MIT License; see `LICENSE`.
+I designed both boards and built the Light Board. Released under the MIT License; see `LICENSE`.

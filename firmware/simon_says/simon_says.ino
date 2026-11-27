@@ -1,5 +1,5 @@
 // World Saving LEDs — Simon Says on the Light Board.
-// Pins match the silkscreen. Buttons pull to GND, LEDs are pin -> 470 -> LED -> GND.
+// Pins match the silkscreen. Buttons pull to GND, LEDs are pin -> LED -> 470 -> GND.
 
 const byte LEDS[7] = {9, 8, 7, 6, 5, 4, 3};
 const byte BUTTONS[7] = {12, 11, 10, A3, A2, A1, A0};
